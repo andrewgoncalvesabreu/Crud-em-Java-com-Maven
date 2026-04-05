@@ -1,0 +1,33 @@
+# Define a imagem Docker que contém o Java e Maven
+image: maven:3.8.5-openjdk-17
+
+# Define a ordem das etapas
+stages:
+  - build
+  - test
+  - deploy
+
+# Etapa 1: Compilação
+build_job:
+  stage: build
+  script:
+    - mvn clean compile
+
+# Etapa 2: Testes e Relatórios
+test_job:
+  stage: test
+  script:
+    - mvn test
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
+
+# Etapa 3: Deploy (Simulado)
+deploy_job:
+  stage: deploy
+  script:
+    - echo "Realizando deploy simulado com sucesso!"
+  only:
+    - main
