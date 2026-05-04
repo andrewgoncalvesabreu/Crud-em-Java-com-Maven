@@ -6,12 +6,11 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    private static final String url = "jdbc:mysql://sql.freedb.tech:3306/freedb_db-andrew";
-    private static final String user = "freedb_freedb_user321";
-    private static final String password = "cV%Z&F8A5bqDKew";
+    public static final String url = "jdbc:postgresql://aws-1-us-east-1.pooler.supabase.com:6543/postgres?sslmode=require";
+    public static final String user = "postgres.jdvbofrjpqtvkprdsiiz";
+    public static final String password = "jdbC2106JAVA";
 
     public static Connection fazConexao(){
-
         try {
             return DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {

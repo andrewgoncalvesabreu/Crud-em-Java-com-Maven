@@ -12,7 +12,12 @@ import java.util.List;
 
 public class UsuarioDAO {
     public void create(Usuario usuario) { //insere um usuario
-        String sql = "INSERT INTO Usuario (usuario, senha) VALUES (?,?)";//o comando SQL
+        String sql = "INSERT INTO usuario (usuario, senha) VALUES (?,?)";//o comando SQL
+
+        if (usuario.getUsuario() == null || usuario.getUsuario().trim().isEmpty() ||
+                usuario.getSenha() == null || usuario.getSenha().trim().isEmpty()) {
+            throw new IllegalArgumentException("Nome e senha são obrigatórios.");
+        }
 
         try (Connection conn = ConnectionFactory.fazConexao();
              PreparedStatement statement = conn.prepareStatement(sql)) {
@@ -29,7 +34,7 @@ public class UsuarioDAO {
     }
 
     public List<Usuario> read() {
-        String sql = "SELECT * FROM Usuario";
+        String sql = "SELECT * FROM usuario";
         List<Usuario> usuarios = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.fazConexao();
@@ -54,7 +59,7 @@ public class UsuarioDAO {
     } //read vai me retornar todos os usuarios do sistema.
 
     public void update(Usuario usuario) { //updatar um usuario especifico
-        String sql = "UPDATE Usuario SET usuario = ?, senha = ? WHERE id = ?";
+        String sql = "UPDATE usuario SET usuario = ?, senha = ? WHERE id = ?";
 
         try (Connection conn = ConnectionFactory.fazConexao();
             PreparedStatement statement = conn.prepareStatement(sql)) {
@@ -70,7 +75,7 @@ public class UsuarioDAO {
     }
 
     public void delete(int id) {
-        String sql = "DELETE FROM Usuario WHERE id = ?";
+        String sql = "DELETE FROM usuario WHERE id = ?";
 
         try( Connection conn = ConnectionFactory.fazConexao();
             PreparedStatement statement = conn.prepareStatement(sql)) {
@@ -92,7 +97,7 @@ public class UsuarioDAO {
     }
 
     public List<Usuario> buscarPorLetra(String letra) {
-        String sql = "SELECT * FROM Usuario WHERE usuario LIKE ?";
+        String sql = "SELECT * FROM usuario WHERE usuario LIKE ?";
         List<Usuario> usuariosEspecificos = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.fazConexao();
