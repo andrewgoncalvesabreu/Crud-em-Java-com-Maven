@@ -18,14 +18,14 @@ public class ReadTest {
     @Test
     public void deveRetornarListaDeUsuariosEExibirNoConsole() {
         // 1. ARRANGE (Preparar os dados no banco)
-        String nomeParaTeste = "Andrew2178";
+        String nomeParaTeste = "Andrewpl885";
         Usuario novoUsuario = new Usuario();
         novoUsuario.setUsuario(nomeParaTeste);
         novoUsuario.setSenha("senha09018");
         usuarioDAO.create(novoUsuario);
 
         // 2. ACT (Ler os dados do banco)
-        List<Usuario> usuariosEncontrados = usuarioDAO.buscarPorLetra(nomeParaTeste);
+        List<Usuario> usuariosEncontrados = usuarioDAO.read();
 
         // 3. EXIBIR NO CONSOLE (O que você pediu)
         System.out.println("\n========================================");
@@ -42,6 +42,10 @@ public class ReadTest {
 
         // 4. ASSERT (Garantir que o teste passou)
         assertFalse(usuariosEncontrados.isEmpty(), "A lista não deveria estar vazia.");
-        assertEquals(nomeParaTeste, usuariosEncontrados.get(0).getUsuario(), "O nome lido deve ser igual ao salvo.");
+        // Verifica se em algum lugar da lista existe o nome que você salvou
+        boolean encontrouNovoUsuario = usuariosEncontrados.stream()
+                .anyMatch(u -> u.getUsuario().equals(nomeParaTeste));
+
+        assertTrue(encontrouNovoUsuario, "O usuário recém-criado deveria estar na lista.");
     }
 }
