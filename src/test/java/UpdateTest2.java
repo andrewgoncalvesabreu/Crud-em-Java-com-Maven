@@ -18,8 +18,7 @@ public class UpdateTest2 {
     @Test
     public void naoDeveAlterarUsuarioComDadosInvalidos() {
         // Arrange
-        Usuario usuarioInvalido = new Usuario();
-        usuarioInvalido.setId(1);      // se o seu id for Integer, pode usar null
+        Usuario usuarioInvalido = new Usuario();// se o seu id for Integer, pode usar null
         usuarioInvalido.setUsuario("");
         usuarioInvalido.setSenha(null);
 

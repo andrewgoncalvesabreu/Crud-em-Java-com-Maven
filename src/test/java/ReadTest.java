@@ -42,7 +42,6 @@ public class ReadTest {
 
         // 4. ASSERT (Garantir que o teste passou)
         assertFalse(usuariosEncontrados.isEmpty(), "A lista não deveria estar vazia.");
-        // Verifica se em algum lugar da lista existe o nome que você salvou
         boolean encontrouNovoUsuario = usuariosEncontrados.stream()
                 .anyMatch(u -> u.getUsuario().equals(nomeParaTeste));
 

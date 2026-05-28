@@ -19,7 +19,7 @@ public class CreateTest1 {
     @Test
     public void deveCadastrarUsuarioComSucesso() {
         // Arrange (Preparar)
-        String nomeTeste = "Andrew2178";
+        String nomeTeste = "werdna_ag";
         Usuario novoUsuario = new Usuario();
         novoUsuario.setUsuario(nomeTeste);
         novoUsuario.setSenha("senha09018");

@@ -31,7 +31,7 @@ public class UsuarioSearchTest {
             System.out.println("Encontrado: " + u.getUsuario());
         }
 
-        // ASSERT: Validar se a lista contém o usuário que criamos
+        // ASSERT: Validar se a lista contém o usuário
         assertFalse(resultados.isEmpty(), "A lista não deveria estar vazia.");
 
         // Verifica se algum dos nomes na lista começa com a letra buscada

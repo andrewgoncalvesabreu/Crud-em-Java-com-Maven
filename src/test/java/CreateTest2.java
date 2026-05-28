@@ -22,7 +22,7 @@ public class CreateTest2 {
 
         // Act & Assert
         // Verifica se o método lança uma exceção ao tentar salvar um usuário inválido
-        // Obs: Para esse teste passar, você precisa implementar a validação (IllegalArgumentException) no seu método create()
+
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             usuarioDAO.create(usuarioInvalido);
         });
